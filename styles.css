@@ -365,12 +365,12 @@ button {
   transition: width 220ms ease;
 }
 
-.site-gruztime .progress-track span {
+.site-animated .progress-track span {
   position: relative;
   overflow: visible;
 }
 
-.site-gruztime .progress-track span::after {
+.site-animated .progress-track span::after {
   content: "";
   position: absolute;
   width: 18px;
@@ -458,11 +458,11 @@ kbd {
   transition: opacity 300ms ease;
 }
 
-.site-gruztime .slide-frame::before {
+.site-animated .slide-frame::before {
   border-color: rgba(var(--accent-rgb), 0.22);
 }
 
-.site-gruztime .slide-frame::after {
+.site-animated .slide-frame::after {
   opacity: 1;
 }
 
@@ -477,12 +477,12 @@ kbd {
   animation: slide-in 240ms ease both;
 }
 
-.site-gruztime .slide-header {
+.site-animated .slide-header {
   animation: reveal-up 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.site-gruztime .slide-header h1,
-.site-gruztime .slide-header h2 {
+.site-animated .slide-header h1,
+.site-animated .slide-header h2 {
   animation: title-reveal 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -545,7 +545,7 @@ kbd {
   background: var(--accent);
 }
 
-.site-gruztime .slide-kicker::before {
+.site-animated .slide-kicker::before {
   transform-origin: left;
   animation: line-draw 620ms 120ms ease both;
 }
@@ -602,7 +602,7 @@ kbd {
   opacity: 0;
 }
 
-.site-gruztime .hero-orbit {
+.site-animated .hero-orbit {
   opacity: 0.75;
 }
 
@@ -754,32 +754,32 @@ kbd {
   opacity: 0;
 }
 
-.site-gruztime .metric-card {
+.site-animated .metric-card {
   animation: card-rise 520ms calc(180ms + var(--step, 0) * 80ms) cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.site-gruztime .metric-card:nth-child(1) {
+.site-animated .metric-card:nth-child(1) {
   --step: 0;
 }
 
-.site-gruztime .metric-card:nth-child(2) {
+.site-animated .metric-card:nth-child(2) {
   --step: 1;
 }
 
-.site-gruztime .metric-card:nth-child(3) {
+.site-animated .metric-card:nth-child(3) {
   --step: 2;
 }
 
-.site-gruztime .metric-card:nth-child(4) {
+.site-animated .metric-card:nth-child(4) {
   --step: 3;
 }
 
-.site-gruztime .sparkline-line {
+.site-animated .sparkline-line {
   stroke-dashoffset: 130;
   animation: chart-draw 1.1s 480ms ease forwards;
 }
 
-.site-gruztime .metric-sparkline circle {
+.site-animated .metric-sparkline circle {
   animation: dot-in 260ms 1.3s ease forwards;
 }
 
@@ -825,17 +825,17 @@ kbd {
   overflow: hidden;
 }
 
-.site-gruztime .content-card,
-.site-gruztime .priority-card,
-.site-gruztime .check-item,
-.site-gruztime .roadmap-card {
+.site-animated .content-card,
+.site-animated .priority-card,
+.site-animated .check-item,
+.site-animated .roadmap-card {
   animation: card-rise 500ms calc(120ms + var(--step, 0) * 65ms) cubic-bezier(0.16, 1, 0.3, 1) both;
   transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
 }
 
-.site-gruztime .content-card::after,
-.site-gruztime .check-item::after,
-.site-gruztime .roadmap-card::after {
+.site-animated .content-card::after,
+.site-animated .check-item::after,
+.site-animated .roadmap-card::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -846,19 +846,19 @@ kbd {
   transition: opacity 200ms ease;
 }
 
-.site-gruztime .content-card:hover,
-.site-gruztime .priority-card:hover,
-.site-gruztime .check-item:hover,
-.site-gruztime .roadmap-card:hover {
+.site-animated .content-card:hover,
+.site-animated .priority-card:hover,
+.site-animated .check-item:hover,
+.site-animated .roadmap-card:hover {
   transform: translateY(-4px);
   border-color: rgba(var(--accent-rgb), 0.32);
   background: rgba(var(--accent-rgb), 0.045);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.22);
 }
 
-.site-gruztime .content-card:hover::after,
-.site-gruztime .check-item:hover::after,
-.site-gruztime .roadmap-card:hover::after {
+.site-animated .content-card:hover::after,
+.site-animated .check-item:hover::after,
+.site-animated .roadmap-card:hover::after {
   opacity: 1;
   animation: card-sheen 850ms ease;
 }
@@ -940,7 +940,7 @@ kbd {
   color: var(--danger);
 }
 
-.site-gruztime .priority-card.critical {
+.site-animated .priority-card.critical {
   animation: card-rise 500ms calc(120ms + var(--step, 0) * 65ms) cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -1052,7 +1052,7 @@ kbd {
   border-radius: inherit;
 }
 
-.site-gruztime .score-track span {
+.site-animated .score-track span {
   transform-origin: left;
   animation: grow-x 900ms 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -1076,13 +1076,13 @@ kbd {
   font-family: Georgia, serif;
 }
 
-.site-gruztime .quote-card {
+.site-animated .quote-card {
   animation: quote-in 650ms 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
   position: relative;
   overflow: hidden;
 }
 
-.site-gruztime .quote-card::after {
+.site-animated .quote-card::after {
   content: "";
   position: absolute;
   width: 130px;
@@ -1133,11 +1133,11 @@ kbd {
   position: relative;
 }
 
-.site-gruztime .funnel-step {
+.site-animated .funnel-step {
   animation: funnel-in 760ms calc(140ms + var(--step) * 130ms) cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.site-gruztime .funnel-step::after {
+.site-animated .funnel-step::after {
   content: "";
   position: absolute;
   width: 7px;
@@ -1209,7 +1209,7 @@ kbd {
   filter: drop-shadow(0 0 6px rgba(var(--accent-rgb), 0.65));
 }
 
-.site-gruztime .ring-progress {
+.site-animated .ring-progress {
   animation: ring-draw 1.2s 500ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -1293,11 +1293,11 @@ kbd {
   background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent), white 28%));
 }
 
-.site-gruztime .bar-item {
+.site-animated .bar-item {
   animation: reveal-up 400ms calc(170ms + var(--step) * 80ms) ease both;
 }
 
-.site-gruztime .bar-track span {
+.site-animated .bar-track span {
   transform-origin: left;
   animation: grow-x 950ms calc(260ms + var(--step) * 90ms) cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -1360,15 +1360,15 @@ kbd {
   opacity: 0;
 }
 
-.site-gruztime .trend-line {
+.site-animated .trend-line {
   animation: chart-draw 1.2s 280ms ease forwards;
 }
 
-.site-gruztime .trend-area {
+.site-animated .trend-area {
   animation: area-in 700ms 650ms ease forwards;
 }
 
-.site-gruztime .trend-dot {
+.site-animated .trend-dot {
   animation: dot-in 250ms 1.2s ease forwards;
 }
 
@@ -1423,12 +1423,12 @@ kbd {
 
 .roadmap {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
   gap: 10px;
   position: relative;
 }
 
-.site-gruztime .roadmap::before {
+.site-animated .roadmap::before {
   content: "";
   position: absolute;
   z-index: 0;
@@ -1441,7 +1441,7 @@ kbd {
   animation: grow-x 1.2s 280ms ease both;
 }
 
-.site-gruztime .roadmap-card {
+.site-animated .roadmap-card {
   position: relative;
   z-index: 1;
 }
@@ -1459,13 +1459,13 @@ kbd {
   text-transform: uppercase;
 }
 
-.site-gruztime .roadmap-card .time {
+.site-animated .roadmap-card .time {
   display: inline-flex;
   align-items: center;
   gap: 6px;
 }
 
-.site-gruztime .roadmap-card .time::before {
+.site-animated .roadmap-card .time::before {
   content: "";
   width: 7px;
   height: 7px;
@@ -1624,7 +1624,7 @@ kbd {
   color: var(--muted);
 }
 
-.site-gruztime .slide-controls button:not(:disabled) {
+.site-animated .slide-controls button:not(:disabled) {
   animation: control-breathe 2.8s ease-in-out 2;
 }
 
@@ -2191,7 +2191,7 @@ body.presenting .slide-frame {
     padding: 17px;
   }
 
-  .site-gruztime .roadmap::before {
+  .site-animated .roadmap::before {
     display: none;
   }
 
@@ -2236,7 +2236,7 @@ body.presenting .slide-frame {
     grid-template-columns: 1fr;
   }
 
-  .site-gruztime .slide-frame {
+  .site-animated .slide-frame {
     transform: none;
   }
 
@@ -2298,10 +2298,10 @@ body.presenting .slide-frame {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .site-gruztime .content-card:hover,
-  .site-gruztime .priority-card:hover,
-  .site-gruztime .check-item:hover,
-  .site-gruztime .roadmap-card:hover {
+  .site-animated .content-card:hover,
+  .site-animated .priority-card:hover,
+  .site-animated .check-item:hover,
+  .site-animated .roadmap-card:hover {
     transform: none;
     box-shadow: none;
   }
@@ -2317,7 +2317,7 @@ body.presenting .slide-frame {
     transition-duration: 0.001ms !important;
   }
 
-  .site-gruztime .slide-frame {
+  .site-animated .slide-frame {
     transform: none;
   }
 }
