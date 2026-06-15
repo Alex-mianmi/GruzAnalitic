@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Интерактивная презентация маркетинговых аудитов GruzTime, ТРАНССКАЙ и 5tones"
+    />
+    <title>Marketing Intelligence · Аудит сайтов</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="На первый слайд">
+        <span class="brand-mark">MI</span>
+        <span class="brand-copy">
+          <strong>Marketing Intelligence</strong>
+          <small>Executive research · June 2026</small>
+        </span>
+      </a>
+
+      <nav class="site-tabs" id="site-tabs" aria-label="Выбор сайта"></nav>
+
+      <div class="top-actions">
+        <button class="icon-button" id="method-button" type="button" aria-label="Методология">
+          <span>i</span>
+        </button>
+        <button class="present-button" id="present-button" type="button">
+          <span class="present-dot"></span>
+          Презентация
+        </button>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <span class="eyebrow">Главы анализа</span>
+          <span class="chapter-count" id="chapter-count">01 / 01</span>
+        </div>
+        <nav class="chapter-nav" id="chapter-nav" aria-label="Главы анализа"></nav>
+        <div class="sidebar-footer">
+          <div class="progress-track"><span id="progress-bar"></span></div>
+          <p>Навигация: <kbd>←</kbd> <kbd>→</kbd></p>
+        </div>
+      </aside>
+
+      <main class="stage">
+        <div class="slide-frame" id="slide-frame">
+          <section class="slide" id="slide" aria-live="polite"></section>
+        </div>
+        <div class="slide-controls">
+          <button id="prev-button" type="button" aria-label="Предыдущая глава">←</button>
+          <span id="slide-label">01 / 01</span>
+          <button id="next-button" type="button" aria-label="Следующая глава">→</button>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="method-dialog" id="method-dialog">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Закрыть">×</button>
+      <span class="eyebrow">О методике</span>
+      <h2>Аудит как система принятия решений</h2>
+      <p>
+        Презентация собрана из финальных маркетинговых, SEO и CRO-аудитов за июнь 2026 года.
+        Цифры по рекламе отражают периоды, указанные в исходных документах.
+      </p>
+      <div class="method-grid">
+        <div><b>01</b><span>Техническая доступность и SEO</span></div>
+        <div><b>02</b><span>UX, мобильная версия и CRO</span></div>
+        <div><b>03</b><span>Реклама и качество измерения</span></div>
+        <div><b>04</b><span>Приоритеты, KPI и roadmap</span></div>
+      </div>
+      <p class="dialog-note">
+        Там, где нет данных по заказам, выручке и марже, выводы помечены как управленческие
+        модели, а не подтверждённый финансовый факт.
+      </p>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
