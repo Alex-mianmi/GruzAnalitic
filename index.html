@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
       content="Интерактивная презентация маркетинговых аудитов GruzTime, ТРАНССКАЙ и 5tones"
@@ -26,6 +26,16 @@
       <nav class="site-tabs" id="site-tabs" aria-label="Выбор сайта"></nav>
 
       <div class="top-actions">
+        <button
+          class="chapters-button"
+          id="chapters-button"
+          type="button"
+          aria-controls="chapter-sidebar"
+          aria-expanded="false"
+        >
+          <span class="chapters-icon"><i></i><i></i><i></i></span>
+          <span id="mobile-chapter-label">Главы</span>
+        </button>
         <button class="icon-button" id="method-button" type="button" aria-label="Методология">
           <span>i</span>
         </button>
@@ -37,10 +47,11 @@
     </header>
 
     <div class="app-shell">
-      <aside class="sidebar">
+      <aside class="sidebar" id="chapter-sidebar" aria-label="Оглавление презентации">
         <div class="sidebar-head">
           <span class="eyebrow">Главы анализа</span>
           <span class="chapter-count" id="chapter-count">01 / 01</span>
+          <button class="sidebar-close" id="sidebar-close" type="button" aria-label="Закрыть оглавление">×</button>
         </div>
         <nav class="chapter-nav" id="chapter-nav" aria-label="Главы анализа"></nav>
         <div class="sidebar-footer">
@@ -48,6 +59,7 @@
           <p>Навигация: <kbd>←</kbd> <kbd>→</kbd></p>
         </div>
       </aside>
+      <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Закрыть оглавление"></button>
 
       <main class="stage">
         <div class="slide-frame" id="slide-frame">

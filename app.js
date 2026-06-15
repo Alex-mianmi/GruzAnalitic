@@ -1048,6 +1048,7 @@ function renderTabs() {
 
 function renderNavigation() {
   const slides = SITES[state.site].slides;
+  const current = slides[state.slide];
   $("#chapter-nav").innerHTML = slides
     .map(
       (slide, index) => `
@@ -1060,6 +1061,8 @@ function renderNavigation() {
   $("#chapter-nav").querySelector(".active")?.scrollIntoView({ block: "nearest" });
   $("#chapter-count").textContent = `${pad(state.slide + 1)} / ${pad(slides.length)}`;
   $("#slide-label").textContent = `${pad(state.slide + 1)} / ${pad(slides.length)}`;
+  $("#mobile-chapter-label").textContent = `${pad(state.slide + 1)} / ${pad(slides.length)}`;
+  $("#chapters-button").setAttribute("aria-label", `Открыть главы. Сейчас: ${current.nav}`);
   $("#progress-bar").style.width = `${((state.slide + 1) / slides.length) * 100}%`;
 }
 
@@ -1140,16 +1143,23 @@ function render() {
   renderSlide();
 }
 
+function setChaptersOpen(open) {
+  document.body.classList.toggle("chapters-open", open);
+  $("#chapters-button").setAttribute("aria-expanded", String(open));
+}
+
 function setSite(site) {
   if (!SITES[site]) return;
   state.site = site;
   state.slide = 0;
+  setChaptersOpen(false);
   render();
 }
 
 function setSlide(index) {
   const max = SITES[state.site].slides.length - 1;
   state.slide = Math.max(0, Math.min(index, max));
+  setChaptersOpen(false);
   renderNavigation();
   renderSlide();
 }
@@ -1172,6 +1182,11 @@ document.addEventListener("click", (event) => {
 
 $("#prev-button").addEventListener("click", () => setSlide(state.slide - 1));
 $("#next-button").addEventListener("click", () => setSlide(state.slide + 1));
+$("#chapters-button").addEventListener("click", () => {
+  setChaptersOpen(!document.body.classList.contains("chapters-open"));
+});
+$("#sidebar-close").addEventListener("click", () => setChaptersOpen(false));
+$("#sidebar-backdrop").addEventListener("click", () => setChaptersOpen(false));
 $(".brand").addEventListener("click", (event) => {
   event.preventDefault();
   setSlide(0);
@@ -1198,14 +1213,45 @@ document.addEventListener("fullscreenchange", () => {
   if (!document.fullscreenElement) document.body.classList.remove("presenting");
 });
 
+let touchStartX = 0;
+let touchStartY = 0;
+
+slideFrame.addEventListener(
+  "touchstart",
+  (event) => {
+    const touch = event.changedTouches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  },
+  { passive: true },
+);
+
+slideFrame.addEventListener(
+  "touchend",
+  (event) => {
+    if (document.body.classList.contains("chapters-open")) return;
+    const touch = event.changedTouches[0];
+    const deltaX = touch.clientX - touchStartX;
+    const deltaY = touch.clientY - touchStartY;
+    if (Math.abs(deltaX) < 70 || Math.abs(deltaY) > Math.abs(deltaX) * 0.65) return;
+    setSlide(state.slide + (deltaX < 0 ? 1 : -1));
+  },
+  { passive: true },
+);
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight" || event.key === "PageDown") setSlide(state.slide + 1);
   if (event.key === "ArrowLeft" || event.key === "PageUp") setSlide(state.slide - 1);
   if (event.key === "Home") setSlide(0);
   if (event.key === "End") setSlide(SITES[state.site].slides.length - 1);
+  if (event.key === "Escape") setChaptersOpen(false);
   if (event.key === "Escape" && document.body.classList.contains("presenting")) {
     document.body.classList.remove("presenting");
   }
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 720) setChaptersOpen(false);
 });
 
 readHash();
