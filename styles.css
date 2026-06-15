@@ -127,12 +127,19 @@ button {
 
 .site-tabs {
   display: flex;
-  justify-content: center;
+  justify-content: safe center;
   gap: 4px;
   min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .site-tab {
+  flex: 0 0 auto;
   border: 0;
   border-radius: 12px;
   padding: 10px 14px;
@@ -428,6 +435,136 @@ kbd {
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   position: relative;
   transition: transform 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+}
+
+.transport-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.2;
+  mask-image: linear-gradient(to bottom, transparent 2%, #000 17%, #000 84%, transparent 98%);
+}
+
+.transport-route {
+  position: absolute;
+  left: -10%;
+  width: 120%;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(var(--accent-rgb), 0.7) 18px 34px);
+}
+
+.route-top {
+  top: 20%;
+  transform: rotate(-4deg);
+}
+
+.route-bottom {
+  bottom: 16%;
+  transform: rotate(3deg);
+}
+
+.vehicle {
+  position: absolute;
+  width: 48px;
+  height: 20px;
+  color: var(--accent);
+  filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.45));
+}
+
+.vehicle i,
+.vehicle span {
+  position: absolute;
+  display: block;
+  background: currentColor;
+}
+
+.vehicle b {
+  position: absolute;
+  bottom: -3px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.vehicle-car {
+  top: calc(20% - 13px);
+  left: -80px;
+  animation: vehicle-drive-right 18s 1s linear infinite;
+}
+
+.vehicle-car i {
+  inset: 6px 2px 1px;
+  border-radius: 9px 13px 4px 4px;
+}
+
+.vehicle-car i::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 8px;
+  left: 10px;
+  top: -6px;
+  border-radius: 9px 9px 0 0;
+  background: currentColor;
+}
+
+.vehicle-car b:nth-of-type(1) {
+  left: 8px;
+}
+
+.vehicle-car b:nth-of-type(2) {
+  right: 7px;
+}
+
+.vehicle-truck {
+  right: -110px;
+  bottom: calc(16% - 11px);
+  width: 72px;
+  animation: vehicle-drive-left 24s 5s linear infinite;
+}
+
+.vehicle-truck span {
+  width: 47px;
+  height: 20px;
+  left: 0;
+  bottom: 1px;
+  border-radius: 3px;
+}
+
+.vehicle-truck i {
+  width: 23px;
+  height: 15px;
+  right: 0;
+  bottom: 1px;
+  border-radius: 3px 8px 3px 2px;
+}
+
+.vehicle-truck b:nth-of-type(1) {
+  left: 12px;
+}
+
+.vehicle-truck b:nth-of-type(2) {
+  right: 8px;
+}
+
+@keyframes vehicle-drive-right {
+  to {
+    transform: translateX(1350px) rotate(-4deg);
+  }
+}
+
+@keyframes vehicle-drive-left {
+  to {
+    transform: translateX(-1400px) rotate(3deg);
+  }
+}
+
+.site-home .transport-overlay {
+  opacity: 0.42;
 }
 
 .slide-frame::before {
@@ -1741,6 +1878,175 @@ kbd {
   text-transform: uppercase;
 }
 
+.overview-map {
+  position: relative;
+}
+
+.overview-route-line {
+  height: 22px;
+  margin: -6px 14px 8px;
+  position: relative;
+  border-top: 1px dashed rgba(var(--accent-rgb), 0.45);
+}
+
+.overview-route-line i {
+  position: absolute;
+  top: -4px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--panel-strong);
+  box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.08);
+}
+
+.overview-route-line i:nth-child(1) {
+  left: 3%;
+}
+
+.overview-route-line i:nth-child(2) {
+  left: 26%;
+}
+
+.overview-route-line i:nth-child(3) {
+  left: 49%;
+}
+
+.overview-route-line i:nth-child(4) {
+  left: 72%;
+}
+
+.overview-route-line i:nth-child(5) {
+  left: 96%;
+}
+
+.route-vehicle {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 23px;
+  height: 11px;
+  border-radius: 3px 6px 2px 2px;
+  background: var(--accent);
+  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.55);
+}
+
+.route-vehicle::before,
+.route-vehicle::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text);
+}
+
+.route-vehicle::before {
+  left: 3px;
+}
+
+.route-vehicle::after {
+  right: 3px;
+}
+
+.site-animated .route-vehicle {
+  animation: route-drive 4.8s 500ms cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+@keyframes route-drive {
+  to {
+    left: calc(100% - 23px);
+  }
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.overview-card {
+  min-height: 142px;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  background:
+    linear-gradient(145deg, rgba(var(--accent-rgb), 0.07), transparent 50%),
+    rgba(255, 255, 255, 0.025);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+
+.site-animated .overview-card {
+  animation: card-rise 520ms calc(120ms + var(--step, 0) * 80ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.overview-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(var(--accent-rgb), 0.5);
+  background: rgba(var(--accent-rgb), 0.08);
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.25);
+}
+
+.overview-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.overview-card-top b {
+  color: var(--accent);
+}
+
+.overview-card-top i {
+  font-style: normal;
+}
+
+.overview-card > strong {
+  margin: 14px 0 7px;
+  font-size: 19px;
+  letter-spacing: -0.035em;
+}
+
+.overview-card p {
+  margin: 0;
+  color: #adb3b9;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.overview-open {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: #d9dcdf;
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.overview-open b {
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.overview-note {
+  margin-top: 10px;
+}
+
 .placeholder-wrap {
   height: 100%;
   display: grid;
@@ -1987,7 +2293,8 @@ body.presenting .slide-frame {
   }
 
   .priority-grid,
-  .grid-three {
+  .grid-three,
+  .overview-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -2303,6 +2610,7 @@ body.presenting .slide-frame {
 
   .grid-two,
   .grid-three,
+  .overview-grid,
   .priority-grid,
   .compare-layout,
   .evidence-layout,
@@ -2310,6 +2618,44 @@ body.presenting .slide-frame {
   .check-grid,
   .compare-insights {
     grid-template-columns: 1fr;
+  }
+
+  .overview-route-line {
+    margin: -3px 6px 7px;
+  }
+
+  .overview-card {
+    min-height: 148px;
+    padding: 16px;
+  }
+
+  .overview-card > strong {
+    font-size: 21px;
+  }
+
+  .overview-card p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .overview-open {
+    font-size: 9px;
+  }
+
+  .transport-overlay {
+    opacity: 0.12;
+  }
+
+  .site-home .transport-overlay {
+    opacity: 0.22;
+  }
+
+  .vehicle-car {
+    animation-duration: 14s;
+  }
+
+  .vehicle-truck {
+    animation-duration: 18s;
   }
 
   .metric-grid {

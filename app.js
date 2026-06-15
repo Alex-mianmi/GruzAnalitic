@@ -752,7 +752,7 @@ const ZHARKOV_SLIDES = [
   },
 ];
 
-const SITES = {
+const SITE_CATALOG = {
   optimpro: {
     name: "OptimPRO",
     sub: "аудит подрядчика",
@@ -2508,7 +2508,66 @@ const SITES = {
   },
 };
 
-const state = { site: "optimpro", slide: 0 };
+const HOME_SLIDES = [
+  {
+    nav: "Карта исследования",
+    type: "overview",
+    kicker: "Главная · маркетинговое исследование",
+    title: "Аналитика транспортных бизнесов <span class='accent-word'>в одном маршруте</span>",
+    lead:
+      "Три подробных аудита сайтов и два предложения подрядчиков по SEO, AEO и рекламе.",
+    items: [
+      ["gruztime", "GruzTime", "Маркетинг, SEO, CRO, реклама и план роста.", "33 главы", "Грузчики и переезды"],
+      ["transskay", "ТРАНССКАЙ", "Аудит транспортной компании dostavka177.com.", "35 глав", "Логистика"],
+      ["tones", "5TONES", "Маркетинг автотехцентра и стратегия локального роста.", "35 глав", "Автосервис"],
+      ["optimpro", "OptimPRO", "Независимый SEO-аудит, Директ и предложение подрядчика.", "33 главы", "Подрядчик"],
+      ["zharkov", "Zharkov", "SEO + AEO сопровождение с финансовой гарантией.", "17 глав", "Подрядчик"],
+    ],
+    note: "Выберите направление — карточка сразу откроет соответствующую презентацию.",
+  },
+  {
+    nav: "Аудиты бизнесов",
+    type: "overview",
+    kicker: "01 · Три транспортных направления",
+    title: "От грузчиков до <span class='accent-word'>автосервиса</span>",
+    lead: "Каждый аудит раскрывает текущую экономику маркетинга, утечки конверсии и план внедрения.",
+    items: [
+      ["gruztime", "GruzTime", "Спрос покупается выгодно, но теряется после клика: сайт, mobile UX, аналитика и Директ.", "33 главы", "Переезды"],
+      ["transskay", "ТРАНССКАЙ", "Сильная структура услуг, технический долг, реклама и стратегия роста логистической компании.", "35 глав", "Грузоперевозки"],
+      ["tones", "5TONES", "Локальный автосервис: SEO, геосервисы, B2B, отзывы, реклама и удержание клиентов.", "35 глав", "Автотехцентр"],
+    ],
+    note: "Во всех трёх презентациях есть приоритеты, KPI и дорожная карта работ.",
+  },
+  {
+    nav: "Предложения подрядчиков",
+    type: "overview",
+    kicker: "02 · Внешние предложения",
+    title: "Два варианта <span class='accent-word'>сопровождения</span>",
+    lead: "Предложения подрядчиков вынесены в отдельные вкладки и расположены после аудитов бизнесов.",
+    items: [
+      ["optimpro", "OptimPRO", "Подробный технический SEO-аудит трёх сайтов, разбор Яндекс Директ и коммерческое предложение.", "33 главы", "SEO + Директ"],
+      ["zharkov", "Zharkov", "SEO + AEO сопровождение: четыре тарифа, ТОП-3 Яндекса и 100% финансовая гарантия.", "17 глав", "SEO + AEO"],
+    ],
+    note: "Вкладки подрядчиков помогают сравнить подходы, стоимость, гарантии и границы ответственности.",
+  },
+];
+
+const SITES = {
+  home: {
+    name: "Главная",
+    sub: "карта исследования",
+    accent: "#4fd1c5",
+    rgb: "79, 209, 197",
+    slides: HOME_SLIDES,
+  },
+  gruztime: SITE_CATALOG.gruztime,
+  transskay: SITE_CATALOG.transskay,
+  tones: SITE_CATALOG.tones,
+  optimpro: SITE_CATALOG.optimpro,
+  zharkov: SITE_CATALOG.zharkov,
+};
+
+const state = { site: "home", slide: 0 };
 
 const $ = (selector) => document.querySelector(selector);
 const pad = (n) => String(n).padStart(2, "0");
@@ -2837,6 +2896,31 @@ function renderEvidence(slide) {
     </div>`;
 }
 
+function renderOverview(slide) {
+  return `
+    ${header(slide)}
+    <div class="overview-map">
+      <div class="overview-route-line" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i>
+        <span class="route-vehicle"></span>
+      </div>
+      <div class="overview-grid">
+        ${slide.items
+          .map(
+            ([site, title, text, count, tag], index) => `
+              <button class="overview-card" type="button" data-site="${site}" style="--step:${index}">
+                <span class="overview-card-top"><b>${tag}</b><i>${count}</i></span>
+                <strong>${title}</strong>
+                <p>${text}</p>
+                <span class="overview-open">Открыть презентацию <b>→</b></span>
+              </button>`,
+          )
+          .join("")}
+      </div>
+    </div>
+    <div class="callout overview-note">${slide.note}</div>`;
+}
+
 function renderPlaceholder(slide) {
   return `
     <div class="placeholder-wrap">
@@ -2862,6 +2946,7 @@ const renderers = {
   roadmap: renderRoadmap,
   checklist: renderChecklist,
   evidence: renderEvidence,
+  overview: renderOverview,
   placeholder: renderPlaceholder,
 };
 
@@ -2903,6 +2988,7 @@ function renderSlide() {
   document.documentElement.style.setProperty("--accent", site.accent);
   document.documentElement.style.setProperty("--accent-rgb", site.rgb);
   document.body.classList.add("site-animated");
+  document.body.classList.toggle("site-home", state.site === "home");
   $("#slide-frame").dataset.slideType = slide.type;
   $("#slide").innerHTML = renderers[slide.type](slide);
   $("#slide").scrollTop = 0;
@@ -3027,7 +3113,7 @@ $("#sidebar-close").addEventListener("click", () => setChaptersOpen(false));
 $("#sidebar-backdrop").addEventListener("click", () => setChaptersOpen(false));
 $(".brand").addEventListener("click", (event) => {
   event.preventDefault();
-  setSlide(0);
+  setSite("home");
 });
 
 $("#method-button").addEventListener("click", () => $("#method-dialog").showModal());
