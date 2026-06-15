@@ -699,6 +699,38 @@ kbd {
   line-height: 1.55;
 }
 
+.hero-summary p {
+  margin: 0;
+}
+
+.hero-report-link {
+  width: fit-content;
+  margin-top: 13px;
+  padding: 8px 11px;
+  border: 1px solid rgba(var(--accent-rgb), 0.28);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(var(--accent-rgb), 0.08);
+  color: var(--text);
+  font-size: 10px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 180ms ease;
+}
+
+.hero-report-link span {
+  color: var(--accent);
+  font-size: 13px;
+}
+
+.hero-report-link:hover {
+  border-color: rgba(var(--accent-rgb), 0.6);
+  background: rgba(var(--accent-rgb), 0.16);
+  transform: translateY(-2px);
+}
+
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2259,6 +2291,14 @@ body.presenting .slide-frame {
     padding-left: 13px;
     font-size: 12px;
     line-height: 1.55;
+  }
+
+  .hero-report-link {
+    width: 100%;
+    padding: 10px 11px;
+    justify-content: space-between;
+    font-size: 10px;
+    line-height: 1.4;
   }
 
   .grid-two,

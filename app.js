@@ -11,6 +11,7 @@ const OPTIMPRO_SLIDES = [
       "Технический SEO-аудит, разбор рекламных кабинетов и коммерческое предложение OptimPRO.",
     summary:
       "В исходном документе OptimPRO подробно фиксирует ошибки gruztime.com, dostavka177.com и 5tones.ru, объясняет влияние каждой проблемы на бизнес и предлагает порядок исправлений.",
+    reportLink: "https://docs.google.com/document/d/1XXbd_sTSFad4FQqQXYzOdFI3Hmh8wnSx13TxM-mSn0M/edit?tab=t.0",
     metrics: [
       ["3 сайта", "Объект аудита", "SEO и реклама"],
       ["42 скриншота", "Доказательная база", "из исходного документа"],
@@ -2307,7 +2308,14 @@ function renderHero(slide) {
       <div class="hero-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
       ${slide.logo ? `<img class="hero-logo" src="${slide.logo}" alt="OptimPRO" />` : ""}
       ${header(slide, "h1")}
-      <p class="hero-summary">${slide.summary}</p>
+      <div class="hero-summary">
+        <p>${slide.summary}</p>
+        ${
+          slide.reportLink
+            ? `<a class="hero-report-link" href="${slide.reportLink}" target="_blank" rel="noopener noreferrer">с оригиналом отчета можно ознакомиться по ссылке <span>↗</span></a>`
+            : ""
+        }
+      </div>
       <div class="metric-grid">
         ${slide.metrics
           .map(
