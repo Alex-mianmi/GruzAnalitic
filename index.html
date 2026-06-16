@@ -8,7 +8,7 @@
       content="Интерактивная презентация маркетинговых аудитов и предложений OptimPRO, Zharkov, GruzTime, ТРАНССКАЙ и 5tones"
     />
     <title>Marketing Intelligence · Аудит сайтов</title>
-    <link rel="stylesheet" href="./styles.css?v=20260616-client-copy-v2" />
+    <link rel="stylesheet" href="./styles.css?v=20260616-nav-fix" />
   </head>
   <body>
     <div class="ambient ambient-one"></div>
@@ -66,9 +66,15 @@
           <section class="slide" id="slide" aria-live="polite"></section>
         </div>
         <div class="slide-controls">
-          <button id="prev-button" type="button" aria-label="Предыдущая глава">←</button>
+          <button id="prev-button" type="button" data-slide="0" aria-label="Предыдущая глава">
+            <span aria-hidden="true">←</span>
+            <b>Назад</b>
+          </button>
           <span id="slide-label">01 / 01</span>
-          <button id="next-button" type="button" aria-label="Следующая глава">→</button>
+          <button id="next-button" type="button" data-slide="0" aria-label="Следующая глава">
+            <b>Вперёд</b>
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
       </main>
     </div>
@@ -99,6 +105,6 @@
       <p id="evidence-dialog-caption"></p>
     </dialog>
 
-    <script src="./app.js?v=20260616-client-copy-v2"></script>
+    <script src="./app.js?v=20260616-nav-fix"></script>
   </body>
 </html>

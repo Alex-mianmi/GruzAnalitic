@@ -3808,6 +3808,8 @@ function renderNavigation() {
   $("#mobile-chapter-label").textContent = `${pad(state.slide + 1)} / ${pad(slides.length)}`;
   $("#chapters-button").setAttribute("aria-label", `Открыть главы. Сейчас: ${current.nav}`);
   $("#progress-bar").style.width = `${((state.slide + 1) / slides.length) * 100}%`;
+  $("#prev-button").dataset.slide = String(Math.max(0, state.slide - 1));
+  $("#next-button").dataset.slide = String(Math.min(slides.length - 1, state.slide + 1));
 }
 
 function renderSlide() {
@@ -3934,8 +3936,14 @@ document.addEventListener("click", (event) => {
   }
 });
 
-$("#prev-button").addEventListener("click", () => setSlide(state.slide - 1));
-$("#next-button").addEventListener("click", () => setSlide(state.slide + 1));
+$(".slide-controls").addEventListener("click", (event) => {
+  const controlButton = event.target.closest("[data-slide]");
+  if (!controlButton || controlButton.disabled) return;
+  event.preventDefault();
+  event.stopPropagation();
+  setSlide(Number(controlButton.dataset.slide));
+});
+
 $("#chapters-button").addEventListener("click", () => {
   setChaptersOpen(!document.body.classList.contains("chapters-open"));
 });
