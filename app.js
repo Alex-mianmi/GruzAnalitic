@@ -2902,7 +2902,6 @@ function renderOverview(slide) {
     <div class="overview-map">
       <div class="overview-route-line" aria-hidden="true">
         <i></i><i></i><i></i><i></i><i></i>
-        <span class="route-vehicle"></span>
       </div>
       <div class="overview-grid">
         ${slide.items

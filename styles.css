@@ -437,136 +437,6 @@ kbd {
   transition: transform 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
 }
 
-.transport-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-  opacity: 0.2;
-  mask-image: linear-gradient(to bottom, transparent 2%, #000 17%, #000 84%, transparent 98%);
-}
-
-.transport-route {
-  position: absolute;
-  left: -10%;
-  width: 120%;
-  height: 1px;
-  background: repeating-linear-gradient(90deg, transparent 0 18px, rgba(var(--accent-rgb), 0.7) 18px 34px);
-}
-
-.route-top {
-  top: 20%;
-  transform: rotate(-4deg);
-}
-
-.route-bottom {
-  bottom: 16%;
-  transform: rotate(3deg);
-}
-
-.vehicle {
-  position: absolute;
-  width: 48px;
-  height: 20px;
-  color: var(--accent);
-  filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.45));
-}
-
-.vehicle i,
-.vehicle span {
-  position: absolute;
-  display: block;
-  background: currentColor;
-}
-
-.vehicle b {
-  position: absolute;
-  bottom: -3px;
-  width: 8px;
-  height: 8px;
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  background: var(--bg);
-}
-
-.vehicle-car {
-  top: calc(20% - 13px);
-  left: -80px;
-  animation: vehicle-drive-right 18s 1s linear infinite;
-}
-
-.vehicle-car i {
-  inset: 6px 2px 1px;
-  border-radius: 9px 13px 4px 4px;
-}
-
-.vehicle-car i::before {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 8px;
-  left: 10px;
-  top: -6px;
-  border-radius: 9px 9px 0 0;
-  background: currentColor;
-}
-
-.vehicle-car b:nth-of-type(1) {
-  left: 8px;
-}
-
-.vehicle-car b:nth-of-type(2) {
-  right: 7px;
-}
-
-.vehicle-truck {
-  right: -110px;
-  bottom: calc(16% - 11px);
-  width: 72px;
-  animation: vehicle-drive-left 24s 5s linear infinite;
-}
-
-.vehicle-truck span {
-  width: 47px;
-  height: 20px;
-  left: 0;
-  bottom: 1px;
-  border-radius: 3px;
-}
-
-.vehicle-truck i {
-  width: 23px;
-  height: 15px;
-  right: 0;
-  bottom: 1px;
-  border-radius: 3px 8px 3px 2px;
-}
-
-.vehicle-truck b:nth-of-type(1) {
-  left: 12px;
-}
-
-.vehicle-truck b:nth-of-type(2) {
-  right: 8px;
-}
-
-@keyframes vehicle-drive-right {
-  to {
-    transform: translateX(1350px) rotate(-4deg);
-  }
-}
-
-@keyframes vehicle-drive-left {
-  to {
-    transform: translateX(-1400px) rotate(3deg);
-  }
-}
-
-.site-home .transport-overlay {
-  opacity: 0.42;
-}
-
 .slide-frame::before {
   content: "";
   position: absolute;
@@ -1920,46 +1790,6 @@ kbd {
   left: 96%;
 }
 
-.route-vehicle {
-  position: absolute;
-  top: -10px;
-  left: 0;
-  width: 23px;
-  height: 11px;
-  border-radius: 3px 6px 2px 2px;
-  background: var(--accent);
-  box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.55);
-}
-
-.route-vehicle::before,
-.route-vehicle::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--text);
-}
-
-.route-vehicle::before {
-  left: 3px;
-}
-
-.route-vehicle::after {
-  right: 3px;
-}
-
-.site-animated .route-vehicle {
-  animation: route-drive 4.8s 500ms cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
-}
-
-@keyframes route-drive {
-  to {
-    left: calc(100% - 23px);
-  }
-}
-
 .overview-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2640,22 +2470,6 @@ body.presenting .slide-frame {
 
   .overview-open {
     font-size: 9px;
-  }
-
-  .transport-overlay {
-    opacity: 0.12;
-  }
-
-  .site-home .transport-overlay {
-    opacity: 0.22;
-  }
-
-  .vehicle-car {
-    animation-duration: 14s;
-  }
-
-  .vehicle-truck {
-    animation-duration: 18s;
   }
 
   .metric-grid {
