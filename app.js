@@ -3954,29 +3954,9 @@ $(".brand").addEventListener("click", (event) => {
   setSite("home");
 });
 
-$("#method-button").addEventListener("click", () => $("#method-dialog").showModal());
-$("#dialog-close").addEventListener("click", () => $("#method-dialog").close());
-$("#method-dialog").addEventListener("click", (event) => {
-  if (event.target === $("#method-dialog")) $("#method-dialog").close();
-});
 $("#evidence-dialog-close").addEventListener("click", () => $("#evidence-dialog").close());
 $("#evidence-dialog").addEventListener("click", (event) => {
   if (event.target === $("#evidence-dialog")) $("#evidence-dialog").close();
-});
-
-$("#present-button").addEventListener("click", async () => {
-  document.body.classList.toggle("presenting");
-  if (document.body.classList.contains("presenting") && document.documentElement.requestFullscreen) {
-    try {
-      await document.documentElement.requestFullscreen();
-    } catch (_) {}
-  } else if (document.fullscreenElement) {
-    document.exitFullscreen();
-  }
-});
-
-document.addEventListener("fullscreenchange", () => {
-  if (!document.fullscreenElement) document.body.classList.remove("presenting");
 });
 
 let touchStartX = 0;
