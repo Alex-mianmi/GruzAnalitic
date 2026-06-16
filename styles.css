@@ -968,6 +968,57 @@ kbd {
   line-height: 1.55;
 }
 
+body.long-copy .slide-header {
+  max-width: 940px;
+  margin-bottom: 24px;
+}
+
+body.long-copy .slide-lead {
+  max-width: 940px;
+  color: #c3c8cd;
+  font-size: clamp(13px, 1.25vw, 15px);
+  line-height: 1.72;
+}
+
+body.long-copy .grid-three,
+body.long-copy .priority-grid,
+body.long-copy .grid-two {
+  gap: 12px;
+}
+
+body.long-copy .content-card,
+body.long-copy .priority-card {
+  padding: 17px;
+}
+
+body.long-copy .priority-card {
+  overflow: visible;
+}
+
+body.long-copy .content-card h3,
+body.long-copy .priority-card h3,
+body.long-copy .roadmap-card h3,
+body.long-copy .quote-card h3 {
+  font-size: 15.5px;
+  line-height: 1.28;
+}
+
+body.long-copy .content-card p,
+body.long-copy .priority-card p,
+body.long-copy .roadmap-card p,
+body.long-copy .quote-card p,
+body.long-copy .check-item p {
+  color: #bbc1c7;
+  font-size: 11.2px;
+  line-height: 1.66;
+}
+
+body.long-copy .callout {
+  color: #c8ccd0;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
 .priority-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
